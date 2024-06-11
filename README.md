@@ -139,7 +139,7 @@ src:
 ├── .env
 ├── .gitignore
 ├── README.md
-├── package.tson
+├── package.json
 
 ```
 
