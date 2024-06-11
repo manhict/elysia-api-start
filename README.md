@@ -155,4 +155,4 @@ This project is licensed under the [MIT] License
 
 ## Contact
 
-If you have any questions or need further assistance, you can reach us at [Aryan Maurya](https://t.me/manhict).
+If you have any questions or need further assistance, you can reach us at [manh'G](https://t.me/manhict).
