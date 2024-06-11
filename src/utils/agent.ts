@@ -1,0 +1,47 @@
+/* We keep this value up-to-date for making our requests to Twitter as
+   indistinguishable from normal user traffic as possible. */
+const fakeChromeVersion = 124;
+const platformWindows = 'Windows NT 10.0; Win64; x64';
+const platformMac = 'Macintosh; Intel Mac OS X 10_15_7';
+const platformLinux = 'X11; Linux x86_64';
+const platformAndroid = 'Linux; Android 10; K';
+const chromeUA = `Mozilla/5.0 ({platform}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/{version}.0.0.0 Safari/537.36`;
+const edgeUA = `Mozilla/5.0 ({platform}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/{version}.0.0.0 Safari/537.36 Edg/{version}.0.0.0`;
+const chromeMobileUA = `Mozilla/5.0 ({platform}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/{version}.0.0.0 Mobile Safari/537.36`;
+const edgeMobileUA = `Mozilla/5.0 ({platform}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/{version}.0.0.0 Mobile Safari/537.36 Edg/{version}.0.0.0`;
+
+enum Platforms {
+  Windows,
+  Mac,
+  Linux,
+  Android
+}
+
+/* Return a random version of Chrome between current and 2 previous versions (i.e. For 109, also return 108 or 107) */
+const getRandomVersion: any = (): number => fakeChromeVersion - Math.floor(Math.random() * 3);
+
+export const generateUserAgent = (): [string, string] => {
+  const platform: any = Math.floor(Math.random() * 4);
+  const isEdge: any = Math.random() > 0.5;
+  const version: any = getRandomVersion();
+
+  let userAgent: any = isEdge ? edgeUA : chromeUA;
+  userAgent = userAgent.format({ version: String(version) });
+  const secChUaChrome: any = `".Not/A)Brand";v="99", "Google Chrome";v="{version}", "Chromium";v="{version}"`;
+  const secChUaEdge: any = `".Not/A)Brand";v="99", "Microsoft Edge";v="{version}", "Chromium";v="{version}"`;
+  const secChUa: any = (isEdge ? secChUaEdge : secChUaChrome).format({
+    version: String(version)
+  });
+
+  switch (platform) {
+    case Platforms.Mac:
+      return [userAgent.format({ platform: platformMac }), secChUa];
+    case Platforms.Linux:
+      return [userAgent.format({ platform: platformLinux }), secChUa];
+    case Platforms.Android:
+      userAgent = isEdge ? edgeMobileUA : chromeMobileUA;
+      return [userAgent.format({ platform: platformAndroid, version: String(version) }), secChUa];
+    default:
+      return [userAgent.format({ platform: platformWindows }), secChUa];
+  }
+};

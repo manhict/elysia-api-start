@@ -1,0 +1,25 @@
+{
+  "name": "elysia-api",
+  "author": {
+    "name": "manh'G"
+  },
+  "version": "1.0.0",
+  "scripts": {
+    "start": "bun run src/index.ts",
+    "dev": "bun run --watch src/index.ts",
+    "dev:pm2": "pm2 start --interpreter ~/.bun/bin/bun src/index.ts --watch"
+  },
+  "dependencies": {
+    "@elysiajs/static": "^1.0.3",
+    "elysia": "^1.0.23",
+    "jose": "^5.4.0",
+    "mongoose": "^8.4.1",
+    "nodecache.js": "^1.2.2",
+    "picocolors": "^1.0.1"
+  },
+  "devDependencies": {
+    "@types/qs": "^6.9.15",
+    "bun-types": "latest"
+  },
+  "module": "index.ts"
+}
