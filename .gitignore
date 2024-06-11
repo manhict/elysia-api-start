@@ -1,25 +1,5 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-.env
-
-# test
-/public
-/cache/shortLink.json
-access.log.txt
-conversations.json
-test.html
-test1.html
-test.json
-test1.json
-*.py
-**/*.py
-/test/ig
-/test/__pycache__
-/test/douyin/__pycache__
-/test/douyin/lib/__pycache__
-/test/tiktok/signer/__pycache__
-/test/tiktok/signer/lib/__pycache__
-
 # Media
 *.mp4
 
@@ -48,7 +28,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
-# .env*
+.env*
 !.env.example
 
 # vercel
@@ -59,7 +39,7 @@ yarn-error.log*
 **/*.tar.gz
 **/*.tgz
 **/*.log
-package-lock.json
 **/*.bun
 bun.lockb
 pnpm-lock.yaml
+package-lock.json
