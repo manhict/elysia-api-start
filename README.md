@@ -19,7 +19,7 @@ Welcome to my awesome project! This project is a REST API starter using Bun + El
 Before you begin, make sure you have the following installed:
 
 - [Bun](https://bun.sh)
-- [MongoDB](mongodb.com) or [MongoCompass](mongodb.com/products/compass)
+- [MongoDB](https://mongodb.com) or [MongoCompass](https://mongodb.com/products/compass)
 
 ### Installations:
 
