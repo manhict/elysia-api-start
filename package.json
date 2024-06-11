@@ -5,9 +5,10 @@
   },
   "version": "1.0.0",
   "scripts": {
-    "start": "bun run src/index.ts",
+    "start": "NODE_ENV=production bun run src/index.ts",
     "dev": "bun run --watch src/index.ts",
-    "dev:pm2": "pm2 start --interpreter ~/.bun/bin/bun src/index.ts --watch"
+    "dev:pm2": "pm2 start --interpreter ~/.bun/bin/bun src/index.ts --watch",
+    "test": "bun test"
   },
   "dependencies": {
     "@elysiajs/static": "^1.0.3",
