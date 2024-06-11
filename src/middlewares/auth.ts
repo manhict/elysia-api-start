@@ -11,7 +11,7 @@ export const auth: any = async (c: Context) => {
   if (c.headers.authorization && c.headers.authorization.startsWith('Bearer')) {
     try {
       token = c.headers.authorization.split(' ')[1]
-      const decoded = await jwt.verify(token)
+      const decoded: any = await jwt.verify(token)
       const user: any = await User.findById(decoded.id)
 
       c.request.headers.set('userId', user?._id.toString())

@@ -55,6 +55,7 @@ Create a .env file in the root directory of your project. Add environment-specif
 PORT=5000
 MONGO_URI=mongodb://localhost:27017/bun-elysia-rest-api
 JWT_SECRET=secret
+JWT_EXPIRE=7d
 ```
 
 ### Routes

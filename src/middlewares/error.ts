@@ -8,7 +8,7 @@ export const error = () =>
         error: true,
         status: 501,
         message: `Not Found - [${c.request.method}]:[${c.path}]`,
-        stack: process.env.NODE_ENV === 'production' ? null : c.error?.stack,
+        stack: process.env.NODE_ENV === 'production' ? null : c.error?.stack
       }
     }
 
@@ -17,6 +17,6 @@ export const error = () =>
       error: true,
       status: c.set.status,
       message: c.error?.message,
-      stack: process.env.NODE_ENV === 'production' ? null : c.error?.stack,
+      stack: process.env.NODE_ENV === 'production' ? null : c.error?.stack
     }
   })
