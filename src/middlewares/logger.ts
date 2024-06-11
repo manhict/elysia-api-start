@@ -6,28 +6,17 @@ export const logger = () =>
   new Elysia()
     .onRequest((ctx) => {
       ctx.store = { ...ctx.store, beforeTime: process.hrtime.bigint() }
+      debugLog(ctx.request, ctx.store)
     })
     .onBeforeHandle((ctx) => {
+      // console.log('=== onBeforeHandle')
       ctx.store = { ...ctx.store, beforeTime: process.hrtime.bigint() }
     })
     .onAfterHandle(({ request, store }) => {
-      const logStr: string[] = []
-      if (request.headers.get('X-Forwarded-For')) {
-        logStr.push(`[${pc.cyan(request.headers.get('X-Forwarded-For'))}]`)
-      }
-
-      logStr.push(methodString(request.method))
-
-      const path = (url: string) => `[${url}]`
-
-      logStr.push(path(new URL(request.url).pathname))
-      const beforeTime: bigint = (store as any).beforeTime
-
-      logStr.push(durationString(beforeTime))
-
-      console.log(logStr.join(': '))
+      // console.log('=== onAfterHandle')
     })
     .onError(({ request, error, store }) => {
+      // console.log('=== onError')
       const logStr: string[] = []
 
       logStr.push(pc.red(methodString(request.method)))
@@ -47,6 +36,25 @@ export const logger = () =>
 
       console.log(logStr.join(' - '))
     })
+
+
+const debugLog = (request: any, store: any) => {
+  const logStr: string[] = []
+  if (request.headers.get('X-Forwarded-For')) {
+    logStr.push(`[${pc.cyan(request.headers.get('X-Forwarded-For'))}]`)
+  }
+
+  logStr.push(methodString(request.method))
+
+  const path = (url: string) => `[${url}]`
+
+  logStr.push(path(new URL(request.url).pathname))
+  const beforeTime: bigint = store.beforeTime
+
+  logStr.push(durationString(beforeTime))
+
+  console.log(logStr.join(': '))
+}
 
 const durationString = (beforeTime: bigint): string => {
   const now = process.hrtime.bigint()
