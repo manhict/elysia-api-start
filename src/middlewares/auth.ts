@@ -12,7 +12,7 @@ export const auth: any = async (c: Context) => {
     try {
       token = c.headers.authorization.split(' ')[1]
       const decoded = await jwt.verify(token)
-      const user = await User.findById(decoded.id)
+      const user: any = await User.findById(decoded.id)
 
       c.request.headers.set('userId', user?._id.toString())
       c.request.headers.set('isAdmin', user?.isAdmin ? 'true' : 'false')

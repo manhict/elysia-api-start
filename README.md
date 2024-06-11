@@ -63,7 +63,7 @@ JWT_SECRET=secret
 POST /v1/users (Create User)
 POST /v1/users/login (Login User)
 GET  /v1/users/profile (Get User Profile)
-GET  /v1/useres (Get All Users)
+GET  /v1/users (Get All Users)
 GET  /v1/users/:id (Get User By Id)
 ```
 
@@ -98,7 +98,7 @@ Authorisation Header (Bearer Token)
 ```
 
 ```
-GET /v1/useres (Get All Users)
+GET /v1/users (Get All Users)
 Authorisation Header (Bearer Token)
 ```
 
@@ -113,7 +113,7 @@ Authorisation Header (Bearer Token)
 
 src:
 ├── .vscode
-│ ├── settings.tson
+│ ├── settings.json
 ├── config
 │ ├── index.ts
 │ ├── db.ts

@@ -5,7 +5,7 @@ export const error = () =>
     if (c.code === 'NOT_FOUND') {
       c.set.status = 501
       return {
-        success: false,
+        error: true,
         status: 501,
         message: `Not Found - [${c.request.method}]:[${c.path}]`,
         stack: process.env.NODE_ENV === 'production' ? null : c.error?.stack,
@@ -14,7 +14,7 @@ export const error = () =>
 
     c.set.status = c.set.status || 500
     return {
-      success: false,
+      error: true,
       status: c.set.status,
       message: c.error?.message,
       stack: process.env.NODE_ENV === 'production' ? null : c.error?.stack,
